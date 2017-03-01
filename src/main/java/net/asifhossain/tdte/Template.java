@@ -6,10 +6,11 @@ package net.asifhossain.tdte;
  */
 public class Template {
 
+    private String template;
     private String variable;
 
     public Template(String template) {
-
+        this.template = template;
     }
 
     public void set(String variable, String value) {
@@ -17,6 +18,6 @@ public class Template {
     }
 
     public String evaluate() {
-        return "Hello, " + variable;
+        return template.replaceAll("\\$\\{name}", variable);
     }
 }
