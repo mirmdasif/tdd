@@ -1,5 +1,8 @@
 package net.asifhossain.tdte;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author asif.hossain
  * @since 3/1/17.
@@ -7,17 +10,25 @@ package net.asifhossain.tdte;
 public class Template {
 
     private String template;
-    private String variable;
+    private Map<String, String> variables;
 
     public Template(String template) {
+        variables = new HashMap<>();
         this.template = template;
     }
 
     public void set(String variable, String value) {
-        this.variable = value;
+        variables.put(variable, value);
     }
 
     public String evaluate() {
-        return template.replaceAll("\\$\\{name}", variable);
+
+        String text = new String(template);
+        for (String variable : variables.keySet()) {
+
+            text = text.replaceAll("\\$\\{" + variable +"}", variables.get(variable));
+        }
+
+        return text;
     }
 }
