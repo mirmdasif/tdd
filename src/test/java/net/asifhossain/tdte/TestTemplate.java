@@ -20,4 +20,12 @@ public class TestTemplate {
         template.set("name", "Bob");
         assertEquals("Hello, Bob", template.evaluate());
     }
+
+    @Test
+    public void differentTemplate() throws Exception {
+        Template template = new Template("Hi, ${name}");
+        template.set("name", "Bob");
+
+        assertEquals("Hi, Bob", template.evaluate());
+    }
 }
