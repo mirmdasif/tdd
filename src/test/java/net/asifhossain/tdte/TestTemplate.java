@@ -13,4 +13,11 @@ public class TestTemplate {
         template.set("name", "Reader");
         assertEquals("Hello, Reader", template.evaluate());
     }
+
+    @Test
+    public void differentVariable() throws Exception {
+        Template template = new Template("Hello, ${name}");
+        template.set("name", "Bob");
+        assertEquals("Hello, Bob", template.evaluate());
+    }
 }
