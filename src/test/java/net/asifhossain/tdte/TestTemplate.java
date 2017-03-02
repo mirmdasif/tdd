@@ -39,4 +39,13 @@ public class TestTemplate {
 
         assertEquals("1, 2, 3", template.evaluate());
     }
+
+    @Test
+    public void unknownVariableAreIgnored() throws Exception {
+        Template template = new Template("Hello, ${name}");
+        template.set("name", "Bob");
+        template.set("unknown", "value unknown");
+
+        assertEquals("Hello, Bob", template.evaluate());
+    }
 }
