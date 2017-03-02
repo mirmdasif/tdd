@@ -30,9 +30,14 @@ public class TestTemplate {
     }
 
     @Test
-    public void missingValueRaisesException() {
+    public void missingValueExceptionForDifferentVariables() {
         try {
+             new Template("${bar}").evaluate();
+        } catch (MissingValueException ex) {
+            assertEquals("No value for variable ${bar}", ex.getMessage());
+        }
 
+        try {
             new Template("${foo}").evaluate();
             fail("evaluate() should throw an exception if a variable was left without a value");
         } catch (MissingValueException ex) {

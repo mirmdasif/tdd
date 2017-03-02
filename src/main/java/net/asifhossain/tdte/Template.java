@@ -2,6 +2,8 @@ package net.asifhossain.tdte;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author asif.hossain
@@ -39,8 +41,9 @@ public class Template {
     }
 
     private void checkForMissingValue(String renderedText) {
-        if (renderedText.matches(".*\\{.+\\}.*")) {
-            throw new MissingValueException("No value for variable ${foo}");
+        Matcher m = Pattern.compile(".*\\{.+\\}.*").matcher(renderedText);
+        if (m.find()) {
+            throw new MissingValueException("No value for variable " + m.group());
         }
     }
 }
