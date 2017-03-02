@@ -29,9 +29,13 @@ public class Template {
             text = text.replaceAll("\\$\\{" + variable +"}", variables.get(variable));
         }
 
-        if (text.matches(".*\\{.+\\}.*")) {
+        checkForMissingValue(text);
+        return text;
+    }
+
+    private void checkForMissingValue(String renderedText) {
+        if (renderedText.matches(".*\\{.+\\}.*")) {
             throw new MissingValueException();
         }
-        return text;
     }
 }
