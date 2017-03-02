@@ -22,15 +22,20 @@ public class Template {
     }
 
     public String evaluate() {
+        String result = replaceVariables();
+        checkForMissingValue(result);
 
-        String text = new String(template);
+        return result;
+    }
+
+    private String replaceVariables() {
+        String result = template;
         for (String variable : variables.keySet()) {
 
-            text = text.replaceAll("\\$\\{" + variable +"}", variables.get(variable));
+            result = result.replaceAll("\\$\\{" + variable +"}", variables.get(variable));
         }
 
-        checkForMissingValue(text);
-        return text;
+        return result;
     }
 
     private void checkForMissingValue(String renderedText) {
