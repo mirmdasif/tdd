@@ -5,4 +5,7 @@ package net.asifhossain.tdte;
  * @since 3/2/17.
  */
 public class MissingValueException extends RuntimeException {
+    public MissingValueException(String message) {
+        super(message);
+    }
 }

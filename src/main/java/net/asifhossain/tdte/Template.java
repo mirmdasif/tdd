@@ -40,7 +40,7 @@ public class Template {
 
     private void checkForMissingValue(String renderedText) {
         if (renderedText.matches(".*\\{.+\\}.*")) {
-            throw new MissingValueException();
+            throw new MissingValueException("No value for variable ${foo}");
         }
     }
 }
