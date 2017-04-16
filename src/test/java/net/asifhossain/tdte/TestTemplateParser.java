@@ -31,8 +31,13 @@ public class TestTemplateParser {
         assertSegments(parser.parse(template), template);
     }
 
+    @Test
+    public void testWithMultipleVariables() {
+        assertSegments(parser.parse(": ${1}:${2}:${3} !"), ": ", "${1}", ":", "${2}", ":", "${3}", " !");
+    }
+
     private void assertSegments(List<String> expected, String... actual) {
-        assertEquals("Number of segments", expected.size(), actual.length);
+        assertEquals("Number of segments", actual.length, expected.size());
         assertEquals(expected, Arrays.asList(actual));
     }
 }
