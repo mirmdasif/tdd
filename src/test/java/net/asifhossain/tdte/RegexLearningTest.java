@@ -39,4 +39,24 @@ public class RegexLearningTest {
         assertEquals("Wrong end index of 2nd match", 28, matcher.end());
         assertFalse("Should not have any more matches", matcher.find());
     }
+
+    @Test
+    public void variableRegexTest() {
+        String template = "${one}, ${two}, ${three}";
+        Pattern pattern = Pattern.compile("\\$\\{[^{]+}");
+        Matcher matcher = pattern.matcher(template);
+
+        assertTrue(matcher.find());
+        assertEquals(matcher.start(), 0);
+        assertEquals(matcher.end(), 6);
+
+        assertTrue(matcher.find());
+        assertEquals(matcher.start(), 8);
+        assertEquals(matcher.end(), 14);
+    }
+
+    @Test
+    public void stringSplitTest() {
+        assertEquals("abc, def".substring(0, 3), "abc");
+    }
 }
