@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
  * @author asif.hossain
  * @since 3/6/17.
  */
-public class TestTemplatePerformence {
+public class TestTemplatePerformance {
 
     private Template  template;
 
