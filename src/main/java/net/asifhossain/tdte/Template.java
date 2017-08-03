@@ -50,21 +50,4 @@ public class Template {
             result.append(segment);
         }
     }
-
-    private String replaceVariables() {
-        String result = template;
-        for (String variable : variables.keySet()) {
-
-            result = result.replaceAll("\\$\\{" + variable +"}", variables.get(variable));
-        }
-
-        return result;
-    }
-
-    private void checkForMissingValue(String renderedText) {
-        Matcher m = Pattern.compile(".*\\{.+\\}.*").matcher(renderedText);
-        if (m.find()) {
-            throw new MissingValueException("No value for variable " + m.group());
-        }
-    }
 }
