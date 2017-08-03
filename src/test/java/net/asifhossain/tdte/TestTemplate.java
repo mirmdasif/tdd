@@ -45,14 +45,14 @@ public class TestTemplate {
         }
     }
 
-//    @Test
-//    public void variablesGetProcessedOnlyOnce() {
-//        template.set("one", "${one}");
-//        template.set("two", "${three}");
-//        template.set("three", "${three}");
-//
-//        assertTemplatesEvaluateTo("${one}, ${two}, ${three}");
-//    }
+    @Test
+    public void variablesGetProcessedOnlyOnce() {
+        template.set("one", "${one}");
+        template.set("two", "${three}");
+        template.set("three", "${three}");
+
+        assertTemplatesEvaluateTo("${one}, ${three}, ${three}");
+    }
 
     private void assertTemplatesEvaluateTo(String expected) {
         assertEquals(expected, template.evaluate());
